@@ -67,9 +67,9 @@ def predict_image(uploaded_file: UploadFile, response: Response):
         likely_class = np.argmax(results)
         confidence_score = float(results[likely_class])
 
-        response_data = {"predicted_class": labels[int(likely_class)], "confidence_score": confidence_score}
+        predicted_class = labels[int(likely_class)]
 
-        return response_data
+        return predicted_class
     except Exception as e:
         traceback.print_exc()
         response.status_code = 500
